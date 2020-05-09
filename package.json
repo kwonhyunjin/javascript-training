@@ -1,0 +1,17 @@
+{
+  "name": "javascript-training",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mniberyl/javascript-training.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mniberyl/javascript-training/issues"
+  },
+  "homepage": "https://github.com/mniberyl/javascript-training#readme",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
