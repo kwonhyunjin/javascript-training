@@ -1,13 +1,12 @@
-// 현재 선택된 요소에 새로 전달 받은 요소를 추가하는 함수(새로운 요소를 추가하는 것이 아님)
+// 현재 선택한 요소에 전달 받은 요소를 추가하는 함수
 function add(nodes, selector) {
-  const colors = "blue";
-  for (let i = 0; i < nodes.length; i++) {
-    nodes[i].style.color = colors;
-    console.log(nodes[i]);
-    for (let j = 0; j < selector.length; j++) {
-      selector[j].style.color = colors;
-      console.log(selector[j]);
-    }
+  const arrayNodes = Array.prototype.slice.call(nodes);
+  const arraySelector = Array.prototype.slice.call(selector);
+  arrayNodes.push(...arraySelector);
+  for (let i = 0; i < arrayNodes.length; i++) {
+    const bgColor = "#eda0c7";
+    arrayNodes[i].style.backgroundColor = bgColor;
+    console.log(arrayNodes[i]);
   }
 }
 
@@ -20,3 +19,6 @@ function children(nodes) {
     }
   }
 }
+
+// 선택된 요소에서 DOM 트리따라 올라가면서 최초 부모 요소를 반환하는 함수
+function closest(nodes) {}
