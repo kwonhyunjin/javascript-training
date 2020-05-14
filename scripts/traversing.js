@@ -9,22 +9,30 @@ function add(nodes, selector) {
 
 // 전달 받은 요소의 자식 요소를 선택하는 함수
 function children(nodes) {
-  const newNodes = [];
+  const newElements = [];
   for (let i = 0; i < nodes.length; i++) {
     const children = nodes[i].children;
-    newNodes.push(children);
+    newElements.push(children);
   }
-  return newNodes;
+  return newElements;
 }
 
 // 선택된 요소에서 DOM 트리따라 올라가면서 최초 부모 요소를 반환하는 함수
 function closest(nodes, selector) {
-  const newNodes = new Set();
+  const newElements = new Set();
   for (let i = 0; i < nodes.length; i++) {
-    console.log(nodes[i]);
     const node = nodes[i].closest(selector);
-    console.log(node);
-    newNodes.add(node);
+    newElements.add(node);
+  }
+  return [...newElements];
+}
+
+// 선택된 요소의 모든 자식 요소들을 반환하는 함수
+function contents(nodes) {
+  const newNodes = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const childNodes = nodes[i].childNodes;
+    newNodes.push(childNodes);
   }
   return newNodes;
 }
