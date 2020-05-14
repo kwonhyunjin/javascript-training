@@ -9,31 +9,31 @@
     <script src="../scripts/manipulation.js"></script>
   </head>
   <style>
-      div, ul, li, p {
-        border: 1px solid #666;
-        padding: 10px;
-        margin: 10px;
-        list-style: none;
-      }
+    li {
+      list-style: none;
+    }
   </style>
   <body>
-    <div>
-      div
-      <ul class="ul-1">
-        ul 1
-        <ul class="ul-2">
-          ul 2
-          <li>
-            li
-            <p>p</p>
-          </li>
-        </ul>
-      </ul>
+    <!-- <div>
+      <p>0</p>
     </div>
+    <div>
+      <p>1</p>
+    </div>
+    <div>
+      <p>2</p>
+    </div> -->
+    <div>
+      <div>
+        <p>p</p>
+        <p>p</p>
+        <p>p</p>
+      </div>
     </div>
     <script>
       const nodes = document.querySelectorAll("p");
-      closest(nodes);
+      const result = closest(nodes, "div");
+      console.log(result);
     </script>
   </body>
 </html>
