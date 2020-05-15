@@ -62,9 +62,7 @@ function even(nodes) {
 
 // filter
 function filter(nodes, callback) {
-  const newNodes = [];
   const arraylNodes = Array.from(nodes);
-  const filterNodes = arraylNodes.filter((aa) => aa.textContent.length > 7);
-  newNodes.push(filterNodes);
-  callback.call(newNodes, filterNodes);
+  const filterNodes = arraylNodes.filter(findName);
+  callback.call(findName, filterNodes);
 }

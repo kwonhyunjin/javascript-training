@@ -19,6 +19,9 @@
     </ul>
     <script>
       const nodes = document.querySelectorAll("li");
+      const findName = function (elems) {
+        return elems.textContent.length > 7;
+      };
       filter(nodes, function (index) {
         console.log(index);
       });
