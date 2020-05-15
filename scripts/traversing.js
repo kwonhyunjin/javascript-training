@@ -36,3 +36,14 @@ function contents(nodes) {
   }
   return newNodes;
 }
+
+// 선택한 요소 중에서 전달 받은 인덱스에 해당하는 요소를 반환하는 함수
+function eq(nodes, index) {
+  const newElement = [];
+  if (index < 0) {
+    index += nodes.length;
+  }
+  const item = nodes[index];
+  newElement.push(item);
+  return newElement;
+}

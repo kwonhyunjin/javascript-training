@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eq</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li class="li-1">List 01</li>
+      <li class="li-2">List 02</li>
+      <li class="li-3">List 03</li>
+      <li class="li-4">List 04</li>
+      <li class="li-5">List 05</li>
+      <li class="li-6">List 06</li>
+    </ul>
+    <script>
+      const nodes = document.querySelectorAll("li");
+      const result = eq(nodes, -1);
+      console.log(result);
+    </script>
+  </body>
+</html>
