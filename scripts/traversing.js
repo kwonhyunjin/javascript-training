@@ -64,5 +64,5 @@ function even(nodes) {
 function filter(nodes, callback) {
   const arraylNodes = Array.from(nodes);
   const filterNodes = arraylNodes.filter(findName);
-  callback.call(findName, filterNodes);
+  callback.call(arraylNodes, filterNodes);
 }
