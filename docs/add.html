@@ -14,9 +14,11 @@
     <span>그쵸!</span>
     <span>그쵸!</span>
     <script>
-      const nodes = document.querySelectorAll("p");
-      const result = add(nodes, "span");
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("p");
+        const result = add(nodes, "span");
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

@@ -17,9 +17,11 @@
       <p>Array 4</p>
     </div>
     <script>
-      const nodes = document.querySelectorAll("p");
-      const result = even(nodes);
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("p");
+        const result = even(nodes);
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

@@ -15,13 +15,12 @@
       <li>Pompom</li>
     </ul>
     <script>
-      const nodes = document.querySelectorAll("li");
-      each(nodes, function (index) {
-        console.log(index + ": " + this.textContent);
-        // const colors = "blue";
-        // nodes[index].style.color = colors;
-        // console.log(nodes[index]);
-      });
+      (() => {
+        const nodes = document.querySelectorAll("li");
+        each(nodes, function (index) {
+          console.log(index + ": " + this.textContent);
+        });
+      })();
     </script>
   </body>
 </html>

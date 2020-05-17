@@ -18,13 +18,13 @@
       <li>Jay</li>
     </ul>
     <script>
-      const nodes = document.querySelectorAll("li");
-      const findName = function (elems) {
-        return elems.textContent.length > 7;
-      };
-      filter(nodes, function (index) {
-        console.log(index);
-      });
+      (() => {
+        const nodes = document.querySelectorAll("li");
+        const result = filter(nodes, function (index) {
+          return this.textContent.length > 7;
+        });
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

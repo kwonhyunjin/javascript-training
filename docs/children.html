@@ -16,9 +16,11 @@
       <p>function</p>
     </div>
     <script>
-      const nodes = document.querySelectorAll("div");
-      const result = children(nodes);
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("div");
+        const result = children(nodes);
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

@@ -60,9 +60,11 @@ function even(nodes) {
   return newNodes;
 }
 
-// filter
+// 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환하는 함수
 function filter(nodes, callback) {
-  const arraylNodes = Array.from(nodes);
-  const filterNodes = arraylNodes.filter(findName);
-  callback.call(findName, filterNodes);
+  const arrayNodes = [...nodes];
+  const filterNodes = arrayNodes.filter(function (element, index, arr) {
+    return callback.call(element, index);
+  });
+  return filterNodes;
 }

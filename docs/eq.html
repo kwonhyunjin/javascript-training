@@ -18,9 +18,11 @@
       <li class="li-6">List 06</li>
     </ul>
     <script>
-      const nodes = document.querySelectorAll("li");
-      const result = eq(nodes, -1);
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("li");
+        const result = eq(nodes, -1);
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

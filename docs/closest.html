@@ -31,9 +31,11 @@
       </div>
     </div>
     <script>
-      const nodes = document.querySelectorAll("p");
-      const result = closest(nodes, "div");
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("p");
+        const result = closest(nodes, "div");
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
