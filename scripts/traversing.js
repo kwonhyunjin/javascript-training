@@ -1,10 +1,6 @@
 // 선택한 요소에 전달 받은 요소를 추가로 선택하는 함수
 function add(nodes, selector) {
   return [...nodes, ...document.querySelectorAll(selector)];
-  // const arrayNodes = Array.from(nodes);
-  // const arraySelector = Array.from(elems);
-  // const arrayAdd = arrayNodes.concat(arraySelector);
-  // return arrayAdd;
 }
 
 // 전달 받은 요소의 자식 요소를 선택하는 함수
@@ -67,4 +63,30 @@ function filter(nodes, callback) {
     return callback.call(element, index);
   });
   return filterNodes;
+}
+
+// find
+function find(nodes, selector) {}
+
+// 선택한 요소들 중에서 첫 번째 요소를 선택하는 함수
+function first(nodes) {
+  const newNode = [];
+  for (let i = 0; i < nodes.length; i++) {
+    if (i == 0) {
+      newNode.push(nodes[i]);
+    }
+  }
+  return newNode;
+}
+
+// 선택한 요소들 중에서 마지막 요소를 선택하는 함수
+function last(nodes) {
+  const newNode = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const lastNum = nodes.length - 1;
+    if (i == lastNum) {
+      newNode.push(nodes[i]);
+    }
+  }
+  return newNode;
 }

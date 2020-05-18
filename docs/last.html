@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>last</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <ul>
+      <li>Kwonhyunjin</li>
+      <li>Beryl</li>
+      <li>Kwonhyojin</li>
+      <li>NaNa</li>
+      <li>Charmdol</li>
+      <li class="last-li">Jay</li>
+    </ul>
+    <script>
+      const nodes = document.querySelectorAll("li");
+      const result = last(nodes);
+      console.log(result);
+    </script>
+  </body>
+</html>
