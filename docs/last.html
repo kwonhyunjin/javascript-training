@@ -18,9 +18,11 @@
       <li class="last-li">Jay</li>
     </ul>
     <script>
-      const nodes = document.querySelectorAll("li");
-      const result = last(nodes);
-      console.log(result);
+      (() => {
+        const nodes = document.querySelectorAll("li");
+        const result = last(nodes);
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
