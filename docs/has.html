@@ -9,13 +9,21 @@
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
-    <div>
+    <!-- <div>
       <p>This is has function.</p>
       <p>This is <b>has</b> function.</p>
+    </div> -->
+    <div>
+      <p>hihih</p>
     </div>
+    <div><p>dfdfaf</p></div>
+    <div><span>dfadafaldjalk</span></div>
     <script>
-      const nodes = document.querySelectorAll("p");
-      has(nodes, "b");
+      (() => {
+        const nodes = document.querySelectorAll("div");
+        const result = has(nodes, "p");
+        console.log(result);
+      })();
     </script>
   </body>
 </html>

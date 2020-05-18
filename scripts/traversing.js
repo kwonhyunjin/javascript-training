@@ -68,7 +68,7 @@ function filter(nodes, callback) {
 // 선택한 요소의 하위 요소 중에서 전달 받은 특정 요소를 찾는 함수
 function find(nodes, selector) {
   const newNodes = [];
-  for (i = 0; i < nodes.length; i++) {
+  for (let i = 0; i < nodes.length; i++) {
     const elems = nodes[i].querySelectorAll(selector);
     newNodes.push(elems);
   }
@@ -100,17 +100,12 @@ function last(nodes) {
 
 // 전달 받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
 function has(nodes, selector) {
-  const newNode = [];
-  const ddd = [...selector];
-  console.log(ddd);
-
+  const newNodes = [];
   for (let i = 0; i < nodes.length; i++) {
-    while (!nodes[i].children) {
-      console.log("hie");
+    const elems = nodes[i].querySelectorAll(selector);
+    if (elems.length > 0) {
+      newNodes.push(nodes[i]);
     }
-    const children = nodes[i].children;
-    newNode.push(children);
-    console.log(newNode);
   }
-  // return newElements;
+  return newNodes;
 }
