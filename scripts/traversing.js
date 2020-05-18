@@ -65,8 +65,15 @@ function filter(nodes, callback) {
   return filterNodes;
 }
 
-// find
-function find(nodes, selector) {}
+// 선택한 요소의 하위 요소 중에서 전달 받은 특정 요소를 찾는 함수
+function find(nodes, selector) {
+  const newNodes = [];
+  for (i = 0; i < nodes.length; i++) {
+    const elems = nodes[i].querySelectorAll(selector);
+    newNodes.push(elems);
+  }
+  return newNodes;
+}
 
 // 선택한 요소들 중에서 첫 번째 요소를 선택하는 함수
 function first(nodes) {
@@ -89,4 +96,21 @@ function last(nodes) {
     }
   }
   return newNode;
+}
+
+// 전달 받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
+function has(nodes, selector) {
+  const newNode = [];
+  const ddd = [...selector];
+  console.log(ddd);
+
+  for (let i = 0; i < nodes.length; i++) {
+    while (!nodes[i].children) {
+      console.log("hie");
+    }
+    const children = nodes[i].children;
+    newNode.push(children);
+    console.log(newNode);
+  }
+  // return newElements;
 }

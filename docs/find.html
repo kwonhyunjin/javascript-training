@@ -20,8 +20,11 @@
       >
     </div>
     <script>
-      const nodes = document.querySelectorAll("div");
-      find(nodes, "p");
+      (() => {
+        const nodes = document.querySelectorAll("div");
+        const result = find(nodes, "p");
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
