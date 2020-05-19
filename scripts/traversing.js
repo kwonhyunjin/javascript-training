@@ -102,8 +102,18 @@ function last(nodes) {
 function has(nodes, selector) {
   const newNodes = [];
   for (let i = 0; i < nodes.length; i++) {
-    const elems = nodes[i].querySelectorAll(selector);
-    if (elems.length > 0) {
+    if (nodes[i].querySelectorAll(selector).length > 0) {
+      newNodes.push(nodes[i]);
+    }
+  }
+  return newNodes;
+}
+
+// 선택한 요소 중에서 전달 받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
+function is(nodes, selector) {
+  const newNodes = [];
+  for (let i = 0; i < nodes.length; i++) {
+    if (nodes[i].matches(selector) == true) {
       newNodes.push(nodes[i]);
     }
   }
