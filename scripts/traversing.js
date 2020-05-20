@@ -59,7 +59,7 @@ function even(nodes) {
 // 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환하는 함수
 function filter(nodes, callback) {
   const arrayNodes = [...nodes];
-  const filterNodes = arrayNodes.filter(function (element, index, arr) {
+  const filterNodes = arrayNodes.filter(function (element, index) {
     return callback.call(element, index);
   });
   return filterNodes;
@@ -86,18 +86,6 @@ function first(nodes) {
   return newNode;
 }
 
-// 선택한 요소들 중에서 마지막 요소를 선택하는 함수
-function last(nodes) {
-  const newNode = [];
-  for (let i = 0; i < nodes.length; i++) {
-    const lastNum = nodes.length - 1;
-    if (i == lastNum) {
-      newNode.push(nodes[i]);
-    }
-  }
-  return newNode;
-}
-
 // 전달 받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
 function has(nodes, selector) {
   const newNodes = [];
@@ -116,6 +104,31 @@ function is(nodes, selector) {
     if (nodes[i].matches(selector) == true) {
       newNodes.push(nodes[i]);
     }
+  }
+  return newNodes;
+}
+
+// 선택한 요소들 중에서 마지막 요소를 선택하는 함수
+function last(nodes) {
+  const newNode = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const lastNum = nodes.length - 1;
+    if (i == lastNum) {
+      newNode.push(nodes[i]);
+    }
+  }
+  return newNode;
+}
+
+// map
+function map(nodes, callback) {
+  const newNodes = [];
+  const arrayNodes = [...nodes];
+  for (let i = 0; i < nodes.length; i++) {
+    const mapNodes = arrayNodes.map(function (value, index, array) {
+      return callback.call(value, index);
+    });
+    newNodes.push(nodes[i]);
   }
   return newNodes;
 }
