@@ -46,14 +46,14 @@ function eq(nodes, index) {
 
 // 선택한 요소들 중에서 짝수 인덱스를 선택하는 함수
 function even(nodes) {
-  const newNodes = [];
+  const newElements = [];
   for (let i = 0; i < nodes.length; i++) {
     if (i % 2 == 0) {
       const evenNodes = nodes[i];
-      newNodes.push(evenNodes);
+      newElements.push(evenNodes);
     }
   }
-  return newNodes;
+  return newElements;
 }
 
 // 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환하는 함수
@@ -126,4 +126,24 @@ function map(nodes, callback) {
     return callback.call(value, index);
   });
   return mapNodes;
+}
+
+// 선택한 요소의 다음에 위치한 형제 요소를 선택하는 함수
+function next(nodes) {
+  const newElement = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const nextElem = nodes[i].nextElementSibling;
+    newElement.push(nextElem);
+  }
+  return newElement;
+}
+
+// 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
+function prev(nodes) {
+  const newElement = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const nextElem = nodes[i].previousElementSibling;
+    newElement.push(nextElem);
+  }
+  return newElement;
 }
