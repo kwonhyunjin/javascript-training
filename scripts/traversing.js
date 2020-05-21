@@ -77,58 +77,53 @@ function find(nodes, selector) {
 
 // 선택한 요소들 중에서 첫 번째 요소를 선택하는 함수
 function first(nodes) {
-  const newNode = [];
+  const newElement = [];
   for (let i = 0; i < nodes.length; i++) {
     if (i == 0) {
-      newNode.push(nodes[i]);
+      newElement.push(nodes[i]);
     }
   }
-  return newNode;
+  return newElement;
 }
 
 // 전달 받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
 function has(nodes, selector) {
-  const newNodes = [];
+  const newElements = [];
   for (let i = 0; i < nodes.length; i++) {
     if (nodes[i].querySelectorAll(selector).length > 0) {
-      newNodes.push(nodes[i]);
+      newElements.push(nodes[i]);
     }
   }
-  return newNodes;
+  return newElements;
 }
 
 // 선택한 요소 중에서 전달 받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
 function is(nodes, selector) {
-  const newNodes = [];
+  const newArray = [];
   for (let i = 0; i < nodes.length; i++) {
-    if (nodes[i].matches(selector) == true) {
-      newNodes.push(nodes[i]);
-    }
+    const isResult = nodes[i].matches(selector);
+    newArray.push(isResult);
   }
-  return newNodes;
+  return newArray;
 }
 
 // 선택한 요소들 중에서 마지막 요소를 선택하는 함수
 function last(nodes) {
-  const newNode = [];
+  const newElement = [];
   for (let i = 0; i < nodes.length; i++) {
     const lastNum = nodes.length - 1;
     if (i == lastNum) {
-      newNode.push(nodes[i]);
+      newElement.push(nodes[i]);
     }
   }
-  return newNode;
+  return newElement;
 }
 
-// map
+// 선택한 요소 각각에 대하여 주어진 함수를 호출한 결과를 새로운 배열에 반환하는 함수
 function map(nodes, callback) {
-  const newNodes = [];
   const arrayNodes = [...nodes];
-  for (let i = 0; i < nodes.length; i++) {
-    const mapNodes = arrayNodes.map(function (value, index, array) {
-      return callback.call(value, index);
-    });
-    newNodes.push(nodes[i]);
-  }
-  return newNodes;
+  const mapNodes = arrayNodes.map(function (value, index, array) {
+    return callback.call(value, index);
+  });
+  return mapNodes;
 }
