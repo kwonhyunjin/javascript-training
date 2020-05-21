@@ -138,6 +138,17 @@ function next(nodes) {
   return newElement;
 }
 
+// 선택한 요소 중에서 전달 받은 선택자에 해당하거나, 함수 호출 결과가 true인 요소를 제외한 나머지 요소를 모두 선택하는 함수
+function not(nodes, selector) {
+  const newElement = [];
+  for (let i = 0; i < nodes.length; i++) {
+    if (!nodes[i].matches(selector)) {
+      newElement.push(nodes[i]);
+    }
+  }
+  return newElement;
+}
+
 // 선택한 요소들 중에서 홀수 인덱스를 선택하는 함수
 function odd(nodes) {
   const newElements = [];

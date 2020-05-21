@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>not</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <div class="not-ex">This</div>
+    <div class="not-ex">is</div>
+    <div>not</div>
+    <div>function.</div>
+    <script>
+      const nodes = document.querySelectorAll("div");
+      const result = not(nodes, ".not-ex");
+      console.log(result);
+    </script>
+  </body>
+</html>
