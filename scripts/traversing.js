@@ -132,18 +132,40 @@ function map(nodes, callback) {
 function next(nodes) {
   const newElement = [];
   for (let i = 0; i < nodes.length; i++) {
-    const nextElem = nodes[i].nextElementSibling;
-    newElement.push(nextElem);
+    const nextNode = nodes[i].nextElementSibling;
+    newElement.push(nextNode);
   }
   return newElement;
+}
+
+// 선택한 요소들 중에서 홀수 인덱스를 선택하는 함수
+function odd(nodes) {
+  const newElements = [];
+  for (let i = 0; i < nodes.length; i++) {
+    if (i % 2 == 1) {
+      const oddNodes = nodes[i];
+      newElements.push(oddNodes);
+    }
+  }
+  return newElements;
+}
+
+// 전달 받은 요소의 부모 요소를 선택하는 함수
+function parent(nodes) {
+  const newElements = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const parent = nodes[i].parentElement;
+    newElements.push(parent);
+  }
+  return newElements;
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
 function prev(nodes) {
   const newElement = [];
   for (let i = 0; i < nodes.length; i++) {
-    const nextElem = nodes[i].previousElementSibling;
-    newElement.push(nextElem);
+    const prevNode = nodes[i].previousElementSibling;
+    newElement.push(prevNode);
   }
   return newElement;
 }

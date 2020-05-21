@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>even</title>
+    <title>odd</title>
     <script src="../scripts/collectionManipulation.js"></script>
     <script src="../scripts/traversing.js"></script>
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
     <div>
-      <p class="p-00">Array 0</p>
-      <p>Array 1</p>
-      <p class="p-02">Array 2</p>
-      <p>Array 3</p>
-      <p class="p-04">Array 4</p>
+      <p>Array 0</p>
+      <p class="p-01">Array 1</p>
+      <p>Array 2</p>
+      <p class="p-03">Array 3</p>
+      <p>Array 4</p>
     </div>
     <script>
       (() => {
         const nodes = document.querySelectorAll("p");
-        const result = even(nodes);
+        const result = odd(nodes);
         console.log(result);
       })();
     </script>
