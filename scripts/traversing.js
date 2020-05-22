@@ -140,13 +140,13 @@ function next(nodes) {
 
 // 선택한 요소 중에서 전달 받은 선택자에 해당하거나, 함수 호출 결과가 true인 요소를 제외한 나머지 요소를 모두 선택하는 함수
 function not(nodes, selector) {
-  const newElement = [];
+  const newElements = [];
   for (let i = 0; i < nodes.length; i++) {
     if (!nodes[i].matches(selector)) {
-      newElement.push(nodes[i]);
+      newElements.push(nodes[i]);
     }
   }
-  return newElement;
+  return newElements;
 }
 
 // 선택한 요소들 중에서 홀수 인덱스를 선택하는 함수
@@ -161,7 +161,7 @@ function odd(nodes) {
   return newElements;
 }
 
-// 전달 받은 요소의 부모 요소를 선택하는 함수
+// 전달 받은 부모 요소를 선택하는 함수
 function parent(nodes) {
   const newElements = [];
   for (let i = 0; i < nodes.length; i++) {
@@ -169,6 +169,11 @@ function parent(nodes) {
     newElements.push(parent);
   }
   return newElements;
+}
+
+// 선택한 요소의 조상 요소를 모두 선택하는 함수
+function parents(nodes, selector) {
+  const newElements = [];
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
@@ -179,4 +184,18 @@ function prev(nodes) {
     newElement.push(prevNode);
   }
   return newElement;
+}
+
+// 선택한 요소의 형제 요소 중에서 지정한 선택자에 해당하는 요소를 모두 선택하는 함수
+function siblings(nodes) {
+  const newElements = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const node = [...nodes[i].parentElement.children];
+    for (let j = 0; j < node.length; j++) {
+      if (nodes[i] !== node[j]) {
+        newElements.push(node[i]);
+      }
+    }
+  }
+  return newElements;
 }

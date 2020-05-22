@@ -3,37 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>closest</title>
+    <title>siblings</title>
     <script src="../scripts/collectionManipulation.js"></script>
     <script src="../scripts/traversing.js"></script>
     <script src="../scripts/manipulation.js"></script>
   </head>
-  <style>
-    li {
-      list-style: none;
-    }
-  </style>
   <body>
-    <!-- <div>
-      <p>0</p>
-    </div>
-    <div>
-      <p>1</p>
-    </div>
-    <div>
-      <p>2</p>
-    </div> -->
-    <div>
-      <div class="closest-div">
-        <p>p</p>
-        <p>p</p>
-        <p>p</p>
-      </div>
-    </div>
+    <ul>
+      <li>First li</li>
+      <li>Second li</li>
+      <li class="third-li">Third li</li>
+      <li>Fourth li</li>
+      <li>Fifth li</li>
+    </ul>
     <script>
       (() => {
-        const nodes = document.querySelectorAll("p");
-        const result = closest(nodes, "div");
+        const nodes = document.querySelectorAll("li.third-li");
+        const result = siblings(nodes);
         console.log(result);
       })();
     </script>

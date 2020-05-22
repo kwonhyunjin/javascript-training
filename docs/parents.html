@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>not</title>
+    <title>parents</title>
     <script src="../scripts/collectionManipulation.js"></script>
     <script src="../scripts/traversing.js"></script>
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
-    <div class="not-ex">This</div>
-    <div class="not-ex">is</div>
-    <div>not</div>
-    <div>function.</div>
+    <div>
+      <div>
+        <ul>
+          <li>This is parents function.</li>
+        </ul>
+      </div>
+    </div>
     <script>
-      (() => {
-        const nodes = document.querySelectorAll("div");
-        const result = not(nodes, ".not-ex");
-        console.log(result);
-      })();
+      const nodes = document.querySelectorAll("li");
+      parents(nodes, "div");
     </script>
   </body>
 </html>
