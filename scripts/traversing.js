@@ -173,7 +173,7 @@ function parent(nodes) {
 
 // 선택한 요소의 조상 요소를 모두 선택하는 함수
 function parents(nodes, selector) {
-  const newElements = [];
+  // @todo
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
@@ -186,14 +186,14 @@ function prev(nodes) {
   return newElement;
 }
 
-// 선택한 요소의 형제 요소 중에서 지정한 선택자에 해당하는 요소를 모두 선택하는 함수
+// 선택한 요소 자신을 제외한 형제 요소를 모두 선택하는 함수
 function siblings(nodes) {
-  const newElements = [];
+  const newElements = new Set();
   for (let i = 0; i < nodes.length; i++) {
     const node = [...nodes[i].parentElement.children];
     for (let j = 0; j < node.length; j++) {
       if (nodes[i] !== node[j]) {
-        newElements.push(node[i]);
+        newElements.add(node[j]);
       }
     }
   }

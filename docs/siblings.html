@@ -12,13 +12,13 @@
     <ul>
       <li>First li</li>
       <li>Second li</li>
-      <li class="third-li">Third li</li>
+      <li class="siblings-li">Third li</li>
       <li>Fourth li</li>
       <li>Fifth li</li>
     </ul>
     <script>
       (() => {
-        const nodes = document.querySelectorAll("li.third-li");
+        const nodes = document.querySelectorAll("li.siblings-li");
         const result = siblings(nodes);
         console.log(result);
       })();
