@@ -14,15 +14,6 @@
     }
   </style>
   <body>
-    <!-- <div>
-      <p>0</p>
-    </div>
-    <div>
-      <p>1</p>
-    </div>
-    <div>
-      <p>2</p>
-    </div> -->
     <div>
       <div class="closest-div">
         <p>p</p>
@@ -32,8 +23,8 @@
     </div>
     <script>
       (() => {
-        const nodes = document.querySelectorAll("p");
-        const result = closest(nodes, "div");
+        const elems = document.querySelectorAll("p");
+        const result = closest(elems, "div");
         console.log(result);
       })();
     </script>

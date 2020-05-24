@@ -16,8 +16,8 @@
     </ul>
     <script>
       (() => {
-        const nodes = document.querySelectorAll("li");
-        each(nodes, function (index) {
+        const elems = document.querySelectorAll("li");
+        each(elems, function (index) {
           console.log(index + ": " + this.textContent);
         });
       })();

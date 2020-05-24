@@ -11,7 +11,7 @@
   <body>
     <div>
       contents function
-      <p>p element</p>
+      <p>p foo</p>
       <ul>
         <li>list</li>
         <li>list</li>
@@ -20,8 +20,8 @@
       </ul>
     </div>
     <script>
-      const nodes = document.querySelectorAll("div");
-      const result = contents(nodes);
+      const elems = document.querySelectorAll("div");
+      const result = contents(elems);
       console.log(result);
     </script>
   </body>

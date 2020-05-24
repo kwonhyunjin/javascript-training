@@ -19,8 +19,8 @@
     </ul>
     <script>
       (() => {
-        const nodes = document.querySelectorAll("li");
-        const result = filter(nodes, function (index) {
+        const elems = document.querySelectorAll("li");
+        const result = filter(elems, function (index) {
           return this.textContent.length > 7;
         });
         console.log(result);
