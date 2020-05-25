@@ -170,3 +170,8 @@ function siblings(elems) {
   }
   return newElems;
 }
+
+// 전달 받은 인자의 첫 번째 요소부터 두 번째 요소 바로 전의 요소들을 선택해 새로운 배열로 반환하는 함수
+function slice(elems, start, end) {
+  return new Set([...elems].slice(start, end));
+}
