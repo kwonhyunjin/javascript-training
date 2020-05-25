@@ -84,14 +84,11 @@ function has(elems, selector) {
 }
 
 // 선택한 요소 중에서 전달 받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
-function is(elems, selector) {
-  // @todo 다시 작업
-  const newElems = new Set();
-  for (let i = 0; i < elems.length; i++) {
-    const isResult = elems[i].matches(selector);
-    newElems.add(isResult);
-  }
-  return newElems;
+function is(elems, callback) {
+  const isTrue = [...elems].some(function (value, index) {
+    return callback.call(value, index);
+  });
+  return isTrue;
 }
 
 // 선택한 요소들 중에서 마지막 요소를 선택하는 함수

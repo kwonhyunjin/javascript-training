@@ -13,12 +13,14 @@
       <p>Let's</p>
       <p>make</p>
       <p class="matches">is</p>
-      <p class="matches">function</p>
+      <p>function</p>
     </div>
     <script>
       (() => {
         const elems = document.querySelectorAll("p");
-        const result = is(elems, ".matches");
+        const result = is(elems, function (index) {
+          return this.matches(".matches");
+        });
         console.log(result);
       })();
     </script>
