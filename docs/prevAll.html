@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prevAll</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <div>
+      <b></b>
+      <span>
+        This is p section to example next function.
+      </span>
+      <p>This is p section to example next function.</p>
+      <strong>This is strong section to example next function.</strong>
+      <ul>
+        <li>This is li section to example next function.</li>
+      </ul>
+    </div>
+    <script>
+      (() => {
+        const elems = document.querySelectorAll("strong");
+        const result = prevAll(elems);
+        console.log(result);
+      })();
+    </script>
+  </body>
+</html>

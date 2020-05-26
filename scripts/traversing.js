@@ -113,6 +113,17 @@ function next(elems) {
   return newElems;
 }
 
+// 선택한 요소의 다음에 위치한 형제 요소를 모두 선택하는 함수
+function nextAll(elems) {
+  const newElems = [];
+  for (let i = 0; i < elems.length; i++) {
+    const siblingsWithSelf = [...elems[i].parentElement.children];
+    const sliceNum = siblingsWithSelf.indexOf(elems[i]) + 1;
+    newElems.push(siblingsWithSelf.slice(sliceNum));
+  }
+  return newElems;
+}
+
 // 선택한 요소 중에서 전달 받은 선택자에 해당하거나, 함수 호출 결과가 true인 요소를 제외한 나머지 요소를 모두 선택하는 함수
 function not(elems, selector) {
   const newElems = new Set();
@@ -143,16 +154,22 @@ function parent(elems) {
   return newElems;
 }
 
-// 선택한 요소의 조상 요소를 모두 선택하는 함수
-function parents(elems, selector) {
-  // @todo
-}
-
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
 function prev(elems) {
   const newElems = new Set();
   for (let i = 0; i < elems.length; i++) {
     newElems.add(elems[i].previousElementSibling);
+  }
+  return newElems;
+}
+
+// 선택한 요소의 이전에 위치한 형제 요소를 모두 선택하는 함수
+function prevAll(elems) {
+  const newElems = [];
+  for (let i = 0; i < elems.length; i++) {
+    const siblingsWithSelf = [...elems[i].parentElement.children];
+    const sliceNum = siblingsWithSelf.indexOf(elems[i]);
+    newElems.push(siblingsWithSelf.slice(0, sliceNum));
   }
   return newElems;
 }
