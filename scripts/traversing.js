@@ -1,9 +1,9 @@
-// 선택한 요소에 전달 받은 요소를 추가로 선택하는 함수
+// 선택한 요소에 전달받은 요소를 추가로 선택하는 함수
 function add(elems, selector) {
   return new Set([...elems, ...document.querySelectorAll(selector)]);
 }
 
-// 전달 받은 요소의 자식 요소를 선택하는 함수
+// 전달받은 요소의 자식 요소를 선택하는 함수
 function children(elems) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
@@ -30,7 +30,7 @@ function contents(elems) {
   return new Set(newElems);
 }
 
-// 선택한 요소 중에서 전달 받은 인덱스에 해당하는 요소 선택하는 함수
+// 선택한 요소 중에서 전달받은 인덱스에 해당하는 요소 선택하는 함수
 function eq(elems, index) {
   const newElems = new Set();
   if (index < 0) {
@@ -57,7 +57,7 @@ function filter(elems, callback) {
   return new Set(newElems);
 }
 
-// 선택한 요소의 하위 요소 중에서 전달 받은 특정 요소를 찾는 함수
+// 선택한 요소의 하위 요소 중에서 전달받은 특정 요소를 찾는 함수
 function find(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
@@ -71,7 +71,7 @@ function first(elems) {
   return new Set([elems[0]]);
 }
 
-// 전달 받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
+// 전달받은 엘리먼트를 포함하고 있는 요소를 선택하는 함수
 function has(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
@@ -83,7 +83,7 @@ function has(elems, selector) {
   return new Set(newElems);
 }
 
-// 선택한 요소 중에서 전달 받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
+// 선택한 요소 중에서 전달받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
 function is(elems, callback) {
   const isTrue = [...elems].some(function (value, index) {
     return callback.call(value, index);
@@ -118,13 +118,25 @@ function nextAll(elems) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
     const siblingsWithSelf = [...elems[i].parentElement.children];
-    const sliceNum = siblingsWithSelf.indexOf(elems[i]) + 1;
-    newElems.push(siblingsWithSelf.slice(sliceNum));
+    const sliceStartNum = siblingsWithSelf.indexOf(elems[i]) + 1;
+    newElems.push(siblingsWithSelf.slice(sliceStartNum));
   }
   return newElems;
 }
 
-// 선택한 요소 중에서 전달 받은 선택자에 해당하거나, 함수 호출 결과가 true인 요소를 제외한 나머지 요소를 모두 선택하는 함수
+// 선택한 요소의 다음 형제 요소 중에서 전달받은 선택자에 해당하는 요소 바로 이전까지의 요소를 모두 선택하는 함수
+function nextUntil(elems, selector) {
+  const newElems = [];
+  for (let i = 0; i < elems.length; i++) {
+    const siblingsWithSelf = [...elems[i].parentElement.children];
+    const sliceStartNum = siblingsWithSelf.indexOf(elems[i]) + 1;
+    const sliceEndNum = siblingsWithSelf.indexOf(...selector);
+    newElems.push(siblingsWithSelf.slice(sliceStartNum, sliceEndNum));
+  }
+  return newElems;
+}
+
+// 선택한 요소 중에서 전달받은 선택자에 해당하거나, 함수 호출 결과가 true인 요소를 제외한 나머지 요소를 모두 선택하는 함수
 function not(elems, selector) {
   const newElems = new Set();
   for (let i = 0; i < elems.length; i++) {
@@ -145,7 +157,7 @@ function odd(elems) {
   return newElems;
 }
 
-// 전달 받은 부모 요소를 선택하는 함수
+// 전달받은 부모 요소를 선택하는 함수
 function parent(elems) {
   const newElems = new Set();
   for (let i = 0; i < elems.length; i++) {
@@ -174,6 +186,18 @@ function prevAll(elems) {
   return newElems;
 }
 
+// 선택한 요소의 이전 형제 요소 중에서 전달받은 선택자에 해당하는 요소 바로 다음까지의 요소를 모두 선택하는 함수
+function prevUntil(elems, selector) {
+  const newElems = [];
+  for (let i = 0; i < elems.length; i++) {
+    const siblingsWithSelf = [...elems[i].parentElement.children];
+    const sliceStartNum = siblingsWithSelf.indexOf(...selector) + 1;
+    const sliceEndNum = siblingsWithSelf.indexOf(elems[i]);
+    newElems.push(siblingsWithSelf.slice(sliceStartNum, sliceEndNum));
+  }
+  return newElems;
+}
+
 // 선택한 요소 자신을 제외한 형제 요소를 모두 선택하는 함수
 function siblings(elems) {
   const newElems = new Set();
@@ -188,7 +212,7 @@ function siblings(elems) {
   return newElems;
 }
 
-// 전달 받은 인자의 첫 번째 요소부터 두 번째 요소 바로 전의 요소들을 선택해 새로운 배열로 반환하는 함수
+// 전달받은 인자의 첫 번째 요소부터 두 번째 요소 바로 전의 요소들을 선택해 새로운 배열로 반환하는 함수
 function slice(elems, start, end) {
   return new Set([...elems].slice(start, end));
 }
