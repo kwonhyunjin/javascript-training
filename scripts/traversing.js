@@ -174,9 +174,24 @@ function parent(elems) {
 }
 
 // 선택한 요소의 상위 요소를 모두 선택하는 함수(선택자가 있다면 전달받은 선택자에 해당하는 상위 요소 선택)
-// @todo parents()
+function parents(elems, selector) {
+  const newElems = new Set();
+  for (let i = 0; i < elems.length; i++) {
+    let parentElem = elems[i].parentElement;
+    while (parentElem != null) {
+      if (selector == null || parentElem.matches(selector)) {
+        newElems.add(parentElem);
+      }
+      parentElem = parentElem.parentElement;
+    }
+  }
+  return newElems;
+}
 
-// @todo parentsUntil()
+// 선택한 요소의 상위 요소들 중에서 전달받은 선택자에 해당하는 요소 바로 이전까지의 요소를 모두 선택하는 함수
+function parentsUntil(elems, end) {
+  // @todo
+}
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
 function prev(elems) {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>parentsUntil</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <div>
+      div
+      <ul>
+        ul
+        <li>li</li>
+        <li>
+          li
+          <p>p<span>span</span></p>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const elems = document.querySelectorAll("p");
+      parentsUntil(elems, "div");
+    </script>
+  </body>
+</html>
