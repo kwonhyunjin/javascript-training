@@ -3,7 +3,7 @@ function add(elems, selector) {
   return new Set([...elems, ...document.querySelectorAll(selector)]);
 }
 
-// 전달받은 요소의 자식 요소를 선택하는 함수
+// 선택한 요소 바로 아래의 자식 요소를 선택하는 함수
 function children(elems) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
@@ -157,7 +157,14 @@ function odd(elems) {
   return newElems;
 }
 
-// 전달받은 부모 요소를 선택하는 함수
+// 선택한 요소의 부모 요소들 중 위치 요소(positioned)를 기준으로 가장 가까운 요소를 찾아서 반환하는 함수
+function offsetParent(elems) {
+  for (let i = 0; i < elems.length; i++) {
+    return new Set([elems[i].offsetParent]);
+  }
+}
+
+// 선택한 요소 바로 위에 부모 요소를 선택하는 함수
 function parent(elems) {
   const newElems = new Set();
   for (let i = 0; i < elems.length; i++) {
@@ -165,6 +172,11 @@ function parent(elems) {
   }
   return newElems;
 }
+
+// 선택한 요소의 상위 요소를 모두 선택하는 함수(선택자가 있다면 전달받은 선택자에 해당하는 상위 요소 선택)
+// @todo parents()
+
+// @todo parentsUntil()
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
 function prev(elems) {
