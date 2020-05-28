@@ -11,18 +11,26 @@
   <body>
     <div>
       div
-      <ul>
+      <ul class="hi">
         ul
         <li>li</li>
         <li>
           li
-          <p>p<span>span</span></p>
+          <ul class="say">
+            <li>li</li>
+            <li>
+              li
+              <p>p</p>
+            </li>
+            <li>li</li>
+          </ul>
         </li>
       </ul>
     </div>
     <script>
       const elems = document.querySelectorAll("p");
-      parentsUntil(elems, "div");
+      const result = parentsUntil(elems, "div", "ul.say");
+      console.log(result);
     </script>
   </body>
 </html>
