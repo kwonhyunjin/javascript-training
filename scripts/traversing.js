@@ -56,7 +56,7 @@ function even(elems) {
 }
 
 // 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환하는 함수
-function filter(elems, callback) {
+function filter(elems, selector, callback) {
   const newElems = [...elems].filter(function (elem, index) {
     return callback.call(elem, index);
   });
@@ -171,12 +171,19 @@ function offsetParent(elems) {
 }
 
 // 선택한 요소 바로 위에 부모 요소를 선택하는 함수
-function parent(elems) {
-  const newElems = new Set();
+function parent(elems, selector) {
+  const newElems = [];
   for (let i = 0; i < elems.length; i++) {
-    newElems.add(elems[i].parentElement);
+    const parentElems = [];
+    parentElems.push(elems[i].parentElement);
+    const matchesElems = parentElems.filter(function (value) {
+      return value.matches(selector);
+    });
+    selector == null
+      ? newElems.push(elems[i].parentElement)
+      : newElems.push(...matchesElems);
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 선택한 요소의 상위 요소를 모두 선택하는 함수(선택자가 있다면 전달받은 선택자에 해당하는 상위 요소 선택)

@@ -10,17 +10,17 @@
   </head>
   <body>
     <ul>
-      <li>Kwonhyunjin</li>
-      <li>Beryl</li>
-      <li>Kwonhyojin</li>
-      <li>NaNa</li>
-      <li>Charmdol</li>
-      <li>Jay</li>
+      <li class="filter-li">Kwonhyunjin</li>
+      <li class="selector-li">Beryl</li>
+      <li class="filter-li">Kwonhyojin</li>
+      <li class="selector-li">NaNa</li>
+      <li class="filter-li">Charmdol</li>
+      <li class="selector-li">Jay</li>
     </ul>
     <script>
       (() => {
         const elems = document.querySelectorAll("li");
-        const result = filter(elems, function (index) {
+        const result = filter(elems, ".filter-li", function (index) {
           return this.textContent.length > 7;
         });
         console.log(result);
