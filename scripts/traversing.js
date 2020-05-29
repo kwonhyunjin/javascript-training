@@ -130,7 +130,7 @@ function nextAll(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
     const siblingsWithSelf = [...elems[i].parentElement.children];
-    const matches = [
+    const matchesElems = [
       ...siblingsWithSelf.slice(siblingsWithSelf.indexOf(elems[i]) + 1),
     ].filter(function (value) {
       return value.matches(selector);
@@ -139,7 +139,7 @@ function nextAll(elems, selector) {
       ? newElems.push(
           ...siblingsWithSelf.slice(siblingsWithSelf.indexOf(elems[i]) + 1)
         )
-      : newElems.push(...matches);
+      : newElems.push(...matchesElems);
   }
   return new Set(newElems);
 }
@@ -248,14 +248,22 @@ function prev(elems, selector) {
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 모두 선택하는 함수
-function prevAll(elems) {
+function prevAll(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
     const siblingsWithSelf = [...elems[i].parentElement.children];
-    const sliceNum = siblingsWithSelf.indexOf(elems[i]);
-    newElems.push(siblingsWithSelf.slice(0, sliceNum));
+    const matchesElems = siblingsWithSelf
+      .slice(0, siblingsWithSelf.indexOf(elems[i]))
+      .filter(function (value) {
+        return value.matches(selector);
+      });
+    selector == null
+      ? newElems.push(
+          ...siblingsWithSelf.slice(0, siblingsWithSelf.indexOf(elems[i]))
+        )
+      : newElems.push(...matchesElems);
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 선택한 요소의 이전 형제 요소 중에서 전달받은 선택자에 해당하는 요소 바로 다음까지의 요소를 모두 선택하는 함수
