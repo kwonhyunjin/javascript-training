@@ -12,7 +12,7 @@ function children(elems, selector) {
       return value.matches(selector);
     });
     selector == null
-      ? newElems.push(...elems[i].children)
+      ? newElems.push(...childElems)
       : newElems.push(...matchesElems);
   }
   return new Set(newElems);
@@ -111,12 +111,18 @@ function map(elems, callback) {
 }
 
 // 선택한 요소의 다음에 위치한 형제 요소를 선택하는 함수
-function next(elems) {
-  const newElems = new Set();
+function next(elems, selector) {
+  const newElems = [];
   for (let i = 0; i < elems.length; i++) {
-    newElems.add(elems[i].nextElementSibling);
+    const nextSiblingsElems = elems[i].nextElementSibling;
+    const matchesElems = [nextSiblingsElems].filter(function (value) {
+      return value.matches(selector);
+    });
+    selector == null
+      ? newElems.push(nextSiblingsElems)
+      : newElems.push(...matchesElems);
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 선택한 요소의 다음에 위치한 형제 요소를 모두 선택하는 함수
@@ -174,13 +180,12 @@ function offsetParent(elems) {
 function parent(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
-    const parentElems = [];
-    parentElems.push(elems[i].parentElement);
-    const matchesElems = parentElems.filter(function (value) {
+    const parentElems = elems[i].parentElement;
+    const matchesElems = [parentElems].filter(function (value) {
       return value.matches(selector);
     });
     selector == null
-      ? newElems.push(elems[i].parentElement)
+      ? newElems.push(parentElems)
       : newElems.push(...matchesElems);
   }
   return new Set(newElems);
@@ -220,12 +225,18 @@ function parentsUntil(elems, end, selector) {
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 선택하는 함수
-function prev(elems) {
-  const newElems = new Set();
+function prev(elems, selector) {
+  const newElems = [];
   for (let i = 0; i < elems.length; i++) {
-    newElems.add(elems[i].previousElementSibling);
+    const prevSiblingElems = elems[i].previousElementSibling;
+    const matchesElems = [prevSiblingElems].filter(function (value) {
+      return value.matches(selector);
+    });
+    selector == null
+      ? newElems.push(prevSiblingElems)
+      : newElems.push(...matchesElems);
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 선택한 요소의 이전에 위치한 형제 요소를 모두 선택하는 함수

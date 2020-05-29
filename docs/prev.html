@@ -9,12 +9,18 @@
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
-    <div>This is div section to example prev function.</div>
-    <span>This is span section to example prev function.</span>
+    <div>
+      <p>This is div section to example prev function.</p>
+      <span>This is span section to example prev function.</span>
+    </div>
+    <div>
+      <p class="selected">This is div section to example prev function.</p>
+      <span>This is span section to example prev function.</span>
+    </div>
     <script>
       (() => {
         const elems = document.querySelectorAll("span");
-        const result = prev(elems);
+        const result = prev(elems, ".selected");
         console.log(result);
       })();
     </script>

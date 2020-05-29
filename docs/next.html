@@ -9,12 +9,24 @@
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
-    <div>This is div section to example next function.</div>
-    <span>This is span section to example next function.</span>
+    <div>
+      <p>This is div section to example next function.</p>
+      <span>This is span section to example next function.</span>
+    </div>
+    <div>
+      <p>This is div section to example next function.</p>
+      <span>This is span section to example next function.</span>
+    </div>
+    <div>
+      <p>This is div section to example next function.</p>
+      <span class="selected"
+        >This is span section to example next function.</span
+      >
+    </div>
     <script>
       (() => {
-        const elems = document.querySelectorAll("div");
-        const result = next(elems);
+        const elems = document.querySelectorAll("p");
+        const result = next(elems, ".selected");
         console.log(result);
       })();
     </script>
