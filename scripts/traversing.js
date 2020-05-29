@@ -126,14 +126,22 @@ function next(elems, selector) {
 }
 
 // 선택한 요소의 다음에 위치한 형제 요소를 모두 선택하는 함수
-function nextAll(elems) {
+function nextAll(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
     const siblingsWithSelf = [...elems[i].parentElement.children];
-    const sliceStartNum = siblingsWithSelf.indexOf(elems[i]) + 1;
-    newElems.push(siblingsWithSelf.slice(sliceStartNum));
+    const matches = [
+      ...siblingsWithSelf.slice(siblingsWithSelf.indexOf(elems[i]) + 1),
+    ].filter(function (value) {
+      return value.matches(selector);
+    });
+    selector == null
+      ? newElems.push(
+          ...siblingsWithSelf.slice(siblingsWithSelf.indexOf(elems[i]) + 1)
+        )
+      : newElems.push(...matches);
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 선택한 요소의 다음 형제 요소 중에서 전달받은 선택자에 해당하는 요소 바로 이전까지의 요소를 모두 선택하는 함수
