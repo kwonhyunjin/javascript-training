@@ -4,10 +4,16 @@ function add(elems, selector) {
 }
 
 // 선택한 요소 바로 아래의 자식 요소를 선택하는 함수
-function children(elems) {
+function children(elems, selector) {
   const newElems = [];
   for (let i = 0; i < elems.length; i++) {
-    newElems.push(...elems[i].children);
+    const childElems = elems[i].children;
+    const matchesElems = [...childElems].filter(function (value) {
+      return value.matches(selector);
+    });
+    selector == null
+      ? newElems.push(...elems[i].children)
+      : newElems.push(...matchesElems);
   }
   return new Set(newElems);
 }

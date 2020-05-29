@@ -12,13 +12,13 @@
     <div>
       <p>Let's</p>
       <p>make</p>
-      <p>children</p>
-      <p>function</p>
+      <p class="selected">children</p>
+      <p class="selected">function</p>
     </div>
     <script>
       (() => {
         const elems = document.querySelectorAll("div");
-        const result = children(elems);
+        const result = children(elems, ".selected");
         console.log(result);
       })();
     </script>
