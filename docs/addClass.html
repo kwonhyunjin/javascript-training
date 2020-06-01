@@ -13,9 +13,13 @@
     <p>그쵸?</p>
     <p>그쵸?</p>
     <script>
-      const elems = document.querySelectorAll("p");
-      const result = addClass(elems, "bro");
-      console.log(result);
+      (() => {
+        const elems = document.querySelectorAll("p");
+        const result = addClass(elems, function (index) {
+          return "bro-" + index;
+        });
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
