@@ -279,17 +279,22 @@ function prevUntil(elems, selector) {
 }
 
 // 선택한 요소 자신을 제외한 형제 요소를 모두 선택하는 함수
-function siblings(elems) {
-  const newElems = new Set();
+function siblings(elems, selector) {
+  const newElems = [];
   for (let i = 0; i < elems.length; i++) {
     const siblingsWithSelf = elems[i].parentElement.children;
     for (let j = 0; j < siblingsWithSelf.length; j++) {
       if (elems[i] !== siblingsWithSelf[j]) {
-        newElems.add(siblingsWithSelf[j]);
+        const matchesElems = [siblingsWithSelf[j]].filter(function (value) {
+          return siblingsWithSelf[j].matches(selector);
+        });
+        selector == null
+          ? newElems.push(siblingsWithSelf[j])
+          : newElems.push(...matchesElems);
       }
     }
   }
-  return newElems;
+  return new Set(newElems);
 }
 
 // 전달받은 인자의 첫 번째 요소부터 두 번째 요소 바로 전의 요소들을 선택해 새로운 배열로 반환하는 함수
