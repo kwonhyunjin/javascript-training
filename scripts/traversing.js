@@ -90,9 +90,13 @@ function has(elems, selector) {
 }
 
 // 선택한 요소 중에서 전달받은 선택자에 해당하는 요소가 하나라도 존재하면 true를 반환하는 함수
-function is(elems, callback) {
+function is(elems, condition) {
   const isTrue = [...elems].some(function (value, index) {
-    return callback.call(value, index);
+    if (typeof condition == "string") {
+      return value.matches(condition);
+    } else if (typeof condition == "function") {
+      return condition.call(value, index);
+    }
   });
   return isTrue;
 }
@@ -286,7 +290,7 @@ function siblings(elems, selector) {
     for (let j = 0; j < siblingsWithSelf.length; j++) {
       if (elems[i] !== siblingsWithSelf[j]) {
         const matchesElems = [siblingsWithSelf[j]].filter(function (value) {
-          return siblingsWithSelf[j].matches(selector);
+          return value.matches(selector);
         });
         selector == null
           ? newElems.push(siblingsWithSelf[j])

@@ -12,14 +12,19 @@
     <div>
       <p>Let's</p>
       <p>make</p>
-      <p class="matches">is</p>
-      <p>function</p>
+      <p class="matches"><strong>is</strong></p>
+      <p><strong>function</strong></p>
     </div>
     <script>
+      // (() => {
+      //   const elems = document.querySelectorAll("p");
+      //   const result = is(elems, ".matches");
+      //   console.log(result);
+      // })();
       (() => {
         const elems = document.querySelectorAll("p");
         const result = is(elems, function (index) {
-          return this.matches(".matches");
+          return this.children.length > 0;
         });
         console.log(result);
       })();
