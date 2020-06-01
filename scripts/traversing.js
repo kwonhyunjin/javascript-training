@@ -56,9 +56,13 @@ function even(elems) {
 }
 
 // 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환하는 함수
-function filter(elems, selector, callback) {
+function filter(elems, condition) {
   const newElems = [...elems].filter(function (elem, index) {
-    return callback.call(elem, index);
+    if (typeof condition == "string") {
+      return elem.matches(condition);
+    } else if (typeof condition == "function") {
+      return condition.call(elem, index);
+    }
   });
   return new Set(newElems);
 }

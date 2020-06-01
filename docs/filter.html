@@ -18,11 +18,16 @@
       <li class="selector-li">Jay</li>
     </ul>
     <script>
+      // (() => {
+      //   const elems = document.querySelectorAll("li");
+      //   const result = filter(elems, function (index) {
+      //     return this.textContent.length > 7;
+      //   });
+      //   console.log(result);
+      // })();
       (() => {
         const elems = document.querySelectorAll("li");
-        const result = filter(elems, ".filter-li", function (index) {
-          return this.textContent.length > 7;
-        });
+        const result = filter(elems, ".selector-li");
         console.log(result);
       })();
     </script>
