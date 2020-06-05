@@ -35,6 +35,14 @@ function attr(elems, attributeName, condition) {
   return newElems;
 }
 
+// 선택한 요소와 일치하는 요소 집합을 복제(deep copy)하는 함수
+function clone(elems) {
+  for (let i = 0; i < elems.length; i++) {
+    const copy = elems[i].cloneNode(true);
+    return copy;
+  }
+}
+
 // 선택한 요소에 클래스를 제거하는 함수
 function removeClass(elems, condition) {
   const newElems = [];
