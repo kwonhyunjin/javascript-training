@@ -10,17 +10,21 @@
   </head>
   <body>
     <div>
-      <img title="charmdol01" />
-      <img title="charmdol02" />
+      <img title="charmdol01" alt="img01" />
+      <img title="charmdol02" alt="img02" />
     </div>
     <script>
       (() => {
         const elems = document.querySelectorAll("img");
-        const result = attr(elems, "src", function (index) {
-          return "../chamdol.jpg";
-        });
+        const result = attr(elems, { title: "jay", alt: "image" });
         console.log(result);
       })();
+      // (() => {
+      //   const elems = document.querySelectorAll("img");
+      //   const result = attr(elems, "src", function (index) {
+      //     return "../chamdol.jpg";
+      //   });
+      // })();
     </script>
   </body>
 </html>

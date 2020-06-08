@@ -15,15 +15,13 @@
     <script>
       // (() => {
       //   const elems = document.querySelectorAll("p");
-      //   const result = addClass(elems, ["bro", "hey"]);
-      //   console.log(result);
+      //   addClass(elems, ["bro", "hey"]);
       // })();
       (() => {
         const elems = document.querySelectorAll("p");
-        const result = addClass(elems, function (index) {
+        addClass(elems, function (index) {
           return "bro-" + index;
         });
-        console.log(result);
       })();
     </script>
   </body>

@@ -14,12 +14,12 @@
       <h1>This is h1-2 section to after function.</h1>
       <h2>This is h2 section to after function.</h2>
       <b>This is b section to after function.</b>
-      <strong>This is b section to after function.</strong>
+      <b>This is b section to after function.</b>
+      <strong>This is strong section to after function.</strong>
     </div>
     <script>
       const elems = document.querySelectorAll("h1");
-      after(elems, ["b", "strong"]);
-      // after(elems, document.createTextNode("charmdol"));
+      after(elems, document.querySelectorAll("b"), true);
     </script>
   </body>
 </html>

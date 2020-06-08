@@ -15,15 +15,13 @@
     <script>
       // (() => {
       //   const elems = document.querySelectorAll("p");
-      //   const result = removeClass(elems, ["hey"]);
-      //   console.log(result);
+      //   removeClass(elems, ["bro", "hey"]);
       // })();
       (() => {
         const elems = document.querySelectorAll("p");
-        const result = removeClass(elems, function (index, className) {
-          return this[index % 2 == 0], "hey";
+        removeClass(elems, function (index, string) {
+          return index == 2, "bro";
         });
-        console.log(result);
       })();
     </script>
   </body>

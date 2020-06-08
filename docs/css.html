@@ -3,20 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>clone</title>
+    <title>css</title>
+    <style>
+      div {
+        background: #344e81;
+        color: #fff;
+        font-size: 30px;
+        width: 250px;
+      }
+    </style>
     <script src="../scripts/collectionManipulation.js"></script>
     <script src="../scripts/traversing.js"></script>
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
     <div>
-      <p><b>Hello</b>, how are you?</p>
+      This is css function.
     </div>
     <script>
-      (() => {
-        const elems = document.querySelectorAll("b");
-        clone(elems);
-      })();
+      const elems = document.querySelectorAll("div");
+      const result = css(elems, "background");
+      console.log(result);
     </script>
   </body>
 </html>
