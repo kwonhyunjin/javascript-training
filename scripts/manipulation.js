@@ -34,6 +34,16 @@ function after(elems, nodes, clone = false) {
   }
 }
 
+function afterHTML(elems, nodes) {
+  for (let i = 0; i < elems.length; i++) {
+    if (typeof nodes == "string") {
+      elems[i].insertAdjacentHTML("afterend", nodes);
+    } else {
+      elems[i].after(nodes.call(elems[i], i));
+    }
+  }
+}
+
 // 선택한 요소들 중에서 제일 처음 요소의 속성의 값을 가져오거나 하나 이상의 속성을 추가하는 함수
 function attr(elems, attributeName, value) {
   for (let i = 0; i < elems.length; i++) {
