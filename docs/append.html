@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>append</title>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <h2>This is append function.</h2>
+    <h2>This is append function.</h2>
+    <div class="container">
+      <div class="inner">
+        Hello
+      </div>
+      <div class="inner">
+        Bye
+      </div>
+    </div>
+    <script>
+      const elems = document.querySelectorAll(".inner");
+      // append(elems, ["hi", document.querySelector("h2")]);
+      append(elems, function (index, html) {
+        return index == 1 ? "Add Text" : "";
+      });
+    </script>
+  </body>
+</html>

@@ -10,27 +10,17 @@ function addClass(elems, className) {
 }
 
 // 선택한 요소 뒤에 다른 곳에 있는 요소를 이동시키는 함수
-function after(elems, nodes, clone = false) {
-  const nodeArr =
-    nodes instanceof Node
-      ? [nodes]
-      : nodes instanceof NodeList
-      ? [...nodes]
-      : [...document.querySelectorAll(nodes)];
-
-  if (clone) {
-    for (let i = 0; i < nodeArr.length; i++) {
-      nodeArr[i].remove();
+function after(elems, nodes) {
+  const nodeArr = nodes instanceof Node ? [nodes] : [...nodes];
+  for (let i = 0; i < elems.length; i++) {
+    for (let j = 0; j < nodeArr.length; j++) {
+      nodeArr[j].remove();
     }
-    for (let i = 0; i < elems.length; i++) {
-      elems[i].after(
-        ...nodeArr.map((value) => {
-          return value.cloneNode(true);
-        })
-      );
-    }
-  } else {
-    elems[elems.length - 1].after(...nodeArr);
+    elems[i].after(
+      ...nodeArr.map((value) => {
+        return value.cloneNode(true);
+      })
+    );
   }
 }
 
@@ -40,6 +30,48 @@ function afterHTML(elems, nodes) {
       elems[i].insertAdjacentHTML("afterend", nodes);
     } else {
       elems[i].after(nodes.call(elems[i], i));
+    }
+  }
+}
+
+// 선택한 요소의 마지막 자식 요소로 추가하는 함수
+function append(elems, nodes) {
+  const nodeArr =
+    nodes instanceof Node
+      ? [nodes]
+      : nodes instanceof Array || Function
+      ? nodes
+      : [...nodes];
+  for (let i = 0; i < elems.length; i++) {
+    if (typeof nodes == "string") {
+      elems[i].insertAdjacentHTML("beforeend", nodes);
+    } else if (nodes instanceof Array) {
+      for (let [key, value] of Object.entries(nodes)) {
+        if (typeof value == "string") {
+          elems[i].append(value);
+        } else if (typeof value == "object") {
+          const nodeVal = value instanceof Node ? [value] : [...value];
+          for (let j = 0; j < nodeVal.length; j++) {
+            nodeVal[j].remove();
+          }
+          elems[i].append(
+            ...nodeVal.map((value) => {
+              return value.cloneNode(true);
+            })
+          );
+        }
+      }
+    } else if (nodes instanceof Function) {
+      elems[i].append(nodes.call(elems[i], i));
+    } else {
+      for (let j = 0; j < nodeArr.length; j++) {
+        nodeArr[j].remove();
+      }
+      elems[i].append(
+        ...nodeArr.map((value) => {
+          return value.cloneNode(true);
+        })
+      );
     }
   }
 }
