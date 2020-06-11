@@ -20,11 +20,13 @@
       </div>
     </div>
     <script>
-      const elems = document.querySelectorAll(".inner");
-      // append(elems, ["hi", document.querySelector("h2")]);
-      append(elems, function (index, html) {
-        return index == 1 ? "Add Text" : "";
-      });
+      (() => {
+        const elems = document.querySelectorAll(".inner");
+        append(elems, ["Text test", document.querySelectorAll("h2")]);
+        // append(elems, function (index, html) {
+        //   return index == 1 ? "Add Text" : "";
+        // });
+      })();
     </script>
   </body>
 </html>

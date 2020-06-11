@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>afterHTML</title>
+    <title>before</title>
     <script src="../scripts/collectionManipulation.js"></script>
     <script src="../scripts/traversing.js"></script>
     <script src="../scripts/manipulation.js"></script>
@@ -13,15 +13,16 @@
       <h1>This is h1 section to after function.</h1>
       <h1>This is h1-2 section to after function.</h1>
       <h2>This is h2 section to after function.</h2>
-      <b>Hello</b>
+      <b>This is b section to after function.</b>
+      <b>This is b section to after function.</b>
       <strong>This is strong section to after function.</strong>
     </div>
     <script>
       (() => {
         const elems = document.querySelectorAll("h1");
-        // afterHTML(elems, "<b>Hello</b>");
-        afterHTML(elems, function (index, html) {
-          return index == 1 ? this.textContent : "";
+        // before(elems, ["Text test", document.querySelector("b")]);
+        before(elems, function (index, html) {
+          return index == 0 ? this.textContent : "";
         });
       })();
     </script>

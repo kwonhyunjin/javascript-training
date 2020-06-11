@@ -20,7 +20,10 @@
     <script>
       (() => {
         const elems = document.querySelectorAll("h1");
-        after(elems, document.querySelectorAll("b"));
+        after(elems, ["<b>HTML String test", "Text test"]);
+        // after(elems, function (index, html) {
+        //   return index == 1 ? "Function test success" : "";
+        // });
       })();
     </script>
   </body>
