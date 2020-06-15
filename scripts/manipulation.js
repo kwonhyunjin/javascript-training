@@ -177,6 +177,38 @@ function css(elems, propertyName, value) {
   }
 }
 
+// 선택한 요소를 문서에서 제거하는 함수(제거한 요소를 저장하여 다시 사용할 수 있다.)
+function detach(elems) {
+  const newElems = [];
+  for (let i = 0; i < elems.length; i++) {
+    elems[i].parentNode.removeChild(elems[i]);
+    newElems.push(elems[i]);
+  }
+  return new Set(newElems);
+}
+
+// 선택한 요소의 첫 번재 요소 높이를 반환하거나, 선택된 요소의 높이를 인수로 전달받은 값으로 설정하는 함수
+function height(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    if (typeof value == "string") {
+      elems[i].style.height = value;
+    } else if (typeof value == "number") {
+      elems[i].style.height = value + "px";
+    } else if (typeof value == "function") {
+      elems[i].style.height = value.call(elems[i], i);
+    } else {
+      return elems[0].offsetHeight;
+    }
+  }
+}
+
+// 선택한 요소를 문서에서 제거하는 함수
+function remove(elems) {
+  for (let i = 0; i < elems.length; i++) {
+    elems[i].parentNode.removeChild(elems[i]);
+  }
+}
+
 // 선택한 요소에 클래스를 제거하는 함수
 function removeClass(elems, className) {
   for (let i = 0; i < elems.length; i++) {
@@ -185,5 +217,20 @@ function removeClass(elems, className) {
     } else if (className instanceof Function) {
       elems[i].classList.remove(className.call(elems[i], i));
     } else elems[i].classList.remove(...className);
+  }
+}
+
+// 선택한 요소의 첫 번재 요소 너비를 반환하거나, 선택된 요소의 너비를 인수로 전달받은 값으로 설정하는 함수
+function width(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    if (typeof value == "string") {
+      elems[i].style.width = value;
+    } else if (typeof value == "number") {
+      elems[i].style.width = value + "px";
+    } else if (typeof value == "function") {
+      elems[i].style.width = value.call(elems[i], i);
+    } else {
+      return elems[0].offsetWidth;
+    }
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>height</title>
+
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>This is height function.</p>
+    </div>
+    <div>
+      <p>This is height function.</p>
+      <p>This is height function.</p>
+    </div>
+    <script>
+      const elems = document.querySelectorAll("div");
+      // const result = height(elems);
+      // console.log(result);
+      height(elems, function (index, height) {
+        return index == 1 ? "200px" : "";
+      });
+    </script>
+  </body>
+</html>
