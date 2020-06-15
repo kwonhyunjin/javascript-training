@@ -195,9 +195,45 @@ function height(elems, value) {
     } else if (typeof value == "number") {
       elems[i].style.height = value + "px";
     } else if (typeof value == "function") {
-      elems[i].style.height = value.call(elems[i], i);
+      elems[i].style.height = value.call(elems[i], i) + "px";
+    } else {
+      return parseInt(window.getComputedStyle(elems[0], null).height);
+    }
+  }
+}
+
+// 선택한 요소의 첫 번째 요소 높이에 패딩 영역을 포함한 높이를 반환하는 함수
+function innerHeight(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    const paddingHeight =
+      parseInt(window.getComputedStyle(elems[i], null).paddingTop) +
+      parseInt(window.getComputedStyle(elems[i], null).paddingBottom);
+    if (typeof value == "string") {
+      elems[i].style.height = parseInt(value) - paddingHeight + "px";
+    } else if (typeof value == "number") {
+      elems[i].style.height = value - paddingHeight + "px";
+    } else if (typeof value == "function") {
+      elems[i].style.height = value.call(elems[i], i, paddingHeight) + "px";
     } else {
       return elems[0].offsetHeight;
+    }
+  }
+}
+
+// 선택한 요소의 첫 번째 요소 너비에 패딩 영역을 포함한 높이를 반환하는 함수
+function innerWidth(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    const paddingWidth =
+      parseInt(window.getComputedStyle(elems[i], null).paddingRight) +
+      parseInt(window.getComputedStyle(elems[i], null).paddingLeft);
+    if (typeof value == "string") {
+      elems[i].style.width = parseInt(value) - paddingWidth + "px";
+    } else if (typeof value == "number") {
+      elems[i].style.width = value - paddingWidth + "px";
+    } else if (typeof value == "function") {
+      elems[i].style.width = value.call(elems[i], i, paddingWidth) + "px";
+    } else {
+      return elems[0].offsetWidth;
     }
   }
 }
@@ -228,9 +264,9 @@ function width(elems, value) {
     } else if (typeof value == "number") {
       elems[i].style.width = value + "px";
     } else if (typeof value == "function") {
-      elems[i].style.width = value.call(elems[i], i);
+      elems[i].style.width = value.call(elems[i], i) + "px";
     } else {
-      return elems[0].offsetWidth;
+      return parseInt(window.getComputedStyle(elems[0], null).width);
     }
   }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>width</title>
+    <title>innerWidth</title>
     <style>
       div {
         padding: 10px 20px;
@@ -15,17 +15,19 @@
   </head>
   <body>
     <div>
-      <p>This is width function.</p>
+      <p>This is innerWidth function.</p>
     </div>
     <div>
-      <p>This is width function.</p>
-      <p>This is width function.</p>
+      <p>This is innerWidth function.</p>
+      <p>This is innerWidth function.</p>
     </div>
     <script>
       const elems = document.querySelectorAll("div");
-      const result = width(elems);
-      console.log(result);
-      // width(elems, "200px");
+      // const result = innerWidth(elems);
+      // console.log(result);
+      innerWidth(elems, function (index, width) {
+        return index + 100 - width;
+      });
     </script>
   </body>
 </html>
