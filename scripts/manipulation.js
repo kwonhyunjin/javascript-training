@@ -194,6 +194,16 @@ function empty(elems) {
   }
 }
 
+// 선택한 요소에 지정한 클래스가 하나라도 있으면 true를 반환하는 함수
+function hasClass(elems, className) {
+  for (let i = 0; i < elems.length; i++) {
+    const isTrue = [...elems].some(function (value) {
+      return value.classList.contains(className);
+    });
+    return isTrue;
+  }
+}
+
 // 선택한 요소의 첫 번재 요소 높이를 반환하거나, 선택된 요소의 높이를 인수로 전달받은 값으로 설정하는 함수
 function height(elems, value) {
   for (let i = 0; i < elems.length; i++) {
