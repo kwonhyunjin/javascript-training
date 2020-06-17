@@ -423,6 +423,32 @@ function removeClass(elems, className) {
   }
 }
 
+/* 선택한 요소의 첫 번째 요소의 수평 스크롤 바의 위치를 얻거나,
+선택한 요소의 수평 스크롤 바의 위치를 인수로 전달받은 값으로 선택하는 함수 */
+function scrollLeft(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    const scrollLeftVal = (elems[i].scrollLeft = value);
+    if (value) {
+      document.querySelector("span").innerHTML = "scollLeft: " + scrollLeftVal;
+    } else {
+      return elems[0].scrollLeft;
+    }
+  }
+}
+
+/* 선택한 요소의 첫 번째 요소의 수직 스크롤 바의 위치를 얻거나,
+선택한 요소의 수직 스크롤 바의 위치를 인수로 전달받은 값으로 선택하는 함수 */
+function scrollTop(elems, value) {
+  for (let i = 0; i < elems.length; i++) {
+    const scrollTopVal = (elems[i].scrollTop = value);
+    if (value) {
+      document.querySelector("span").innerHTML = "scollTop: " + scrollTopVal;
+    } else {
+      return elems[0].scrollTop;
+    }
+  }
+}
+
 // 선택한 요소의 첫 번재 요소 너비를 반환하거나, 선택된 요소의 너비를 인수로 전달받은 값으로 설정하는 함수
 function width(elems, value) {
   for (let i = 0; i < elems.length; i++) {

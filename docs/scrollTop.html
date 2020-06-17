@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scrollTop</title>
+    <style>
+      div {
+        background: #7b5da1 none repeat scroll 0 0;
+        border: 1px solid #000;
+        margin: 10px;
+        padding: 5px;
+        width: 200px;
+        height: 100px;
+        position: relative;
+        overflow: auto;
+      }
+      p {
+        margin: 10px;
+        padding: 5px;
+        width: 500px;
+        height: 150px;
+        color: #fff;
+      }
+      span {
+        margin: 10px;
+      }
+    </style>
+    <script src="../scripts/collectionManipulation.js"></script>
+    <script src="../scripts/traversing.js"></script>
+    <script src="../scripts/manipulation.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>This is scrollTop function.</p>
+      <p>Same contents.</p>
+    </div>
+    <span></span>
+
+    <script>
+      (() => {
+        const elems = document.querySelectorAll("div");
+        const result = scrollTop(elems, 100);
+        console.log(result);
+      })();
+    </script>
+  </body>
+</html>
