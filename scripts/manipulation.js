@@ -202,7 +202,7 @@ function height(elems, value) {
   }
 }
 
-// 선택한 요소의 첫 번째 요소 높이에 패딩 영역을 포함한 높이를 반환하는 함수
+// 선택한 요소의 padding 영역을 포함한 높이를 반환(첫 번째 요소만)하거나, 인수로 전달받은 값으로 높이를 설정하는 함수
 function innerHeight(elems, value) {
   for (let i = 0; i < elems.length; i++) {
     const paddingHeight =
@@ -215,12 +215,15 @@ function innerHeight(elems, value) {
     } else if (typeof value == "function") {
       elems[i].style.height = value.call(elems[i], i, paddingHeight) + "px";
     } else {
-      return elems[0].offsetHeight;
+      return (
+        elems[0].offsetHeight -
+        parseInt(window.getComputedStyle(elems[0], null).borderTop) -
+        parseInt(window.getComputedStyle(elems[0], null).borderBottom)
+      );
     }
   }
 }
-
-// 선택한 요소의 첫 번째 요소 너비에 패딩 영역을 포함한 높이를 반환하는 함수
+// 선택한 요소의 padding 영역을 포함한 너비를 반환(첫 번째 요소만)하거나, 인수로 전달받은 값으로 너비를 설정하는 함수
 function innerWidth(elems, value) {
   for (let i = 0; i < elems.length; i++) {
     const paddingWidth =
@@ -233,6 +236,115 @@ function innerWidth(elems, value) {
     } else if (typeof value == "function") {
       elems[i].style.width = value.call(elems[i], i, paddingWidth) + "px";
     } else {
+      return (
+        elems[0].offsetWidth -
+        parseInt(window.getComputedStyle(elems[0], null).borderLeft) -
+        parseInt(window.getComputedStyle(elems[0], null).borderRight)
+      );
+    }
+  }
+}
+
+// 선택한 요소의 좌표를 가져오거나 특정 좌표로 이동시키는 함수
+function offset(elems, coordinates) {
+  // @todo
+  //     return {
+  //       top: elems[0].getBoundingClientRect().top,
+  //       left: elems[0].getBoundingClientRect().left,
+  //     };
+  //   }
+  // }
+}
+
+// 선택한 요소의 padding/border 영역을 포함(margin 불포함)한 높이를 반환하거나, 인수로 전달받은 값으로 높이를 설정하는 함수
+function outerHeight(elems, value, includeMargin = false) {
+  for (let i = 0; i < elems.length; i++) {
+    const paddingHeight =
+      parseInt(window.getComputedStyle(elems[i], null).paddingTop) +
+      parseInt(window.getComputedStyle(elems[i], null).paddingBottom);
+    const marginHeight =
+      parseInt(window.getComputedStyle(elems[i], null).marginTop) +
+      parseInt(window.getComputedStyle(elems[i], null).marginBottom);
+    const borderHeight =
+      parseInt(window.getComputedStyle(elems[i], null).borderTop) +
+      parseInt(window.getComputedStyle(elems[i], null).borderBottom);
+    if (typeof value == "number") {
+      if (includeMargin) {
+        elems[i].style.height =
+          value - paddingHeight - marginHeight - borderHeight + "px";
+      } else {
+        elems[i].style.height = value - paddingHeight - borderHeight + "px";
+      }
+    } else if (typeof value == "string") {
+      if (includeMargin) {
+        elems[i].style.height =
+          parseInt(value) - paddingHeight - marginHeight - borderHeight + "px";
+      } else {
+        elems[i].style.height =
+          parseInt(value) - paddingHeight - borderHeight + "px";
+      }
+    } else if (typeof value == "function") {
+      elems[i].style.height = value.call(elems[i], i) + "px";
+    } else if (value) {
+      includeMargin = value;
+      if (includeMargin) {
+        return (
+          elems[0].offsetHeight +
+          parseInt(window.getComputedStyle(elems[0], null).marginLeft) +
+          parseInt(window.getComputedStyle(elems[0], null).marginRight)
+        );
+      } else {
+        return elems[0].offsetHeight;
+      }
+    } else {
+      includeMargin = value;
+      return elems[0].offsetHeight;
+    }
+  }
+}
+
+// 선택한 요소의 padding/border 영역을 포함(margin 불포함)한 너비를 반환하거나, 인수로 전달받은 값으로 너비를 설정하는 함수
+function outerWidth(elems, value, includeMargin = false) {
+  for (let i = 0; i < elems.length; i++) {
+    const paddingWidth =
+      parseInt(window.getComputedStyle(elems[i], null).paddingLeft) +
+      parseInt(window.getComputedStyle(elems[i], null).paddingRight);
+    const marginWidth =
+      parseInt(window.getComputedStyle(elems[i], null).marginLeft) +
+      parseInt(window.getComputedStyle(elems[i], null).marginRight);
+    const borderWidth =
+      parseInt(window.getComputedStyle(elems[i], null).borderLeft) +
+      parseInt(window.getComputedStyle(elems[i], null).borderRight);
+    if (typeof value == "number") {
+      if (includeMargin) {
+        elems[i].style.width =
+          value - paddingWidth - borderWidth - marginWidth + "px";
+      } else {
+        elems[i].style.width = value - paddingWidth - borderWidth + "px";
+      }
+    } else if (typeof value == "string") {
+      if (includeMargin) {
+        elems[i].style.width =
+          parseInt(value) - paddingWidth - borderWidth - marginWidth + "px";
+      } else {
+        elems[i].style.width =
+          parseInt(value) - paddingWidth - borderWidth + "px";
+      }
+    } else if (typeof value == "function") {
+      elems[i].style.width = value.call(elems[i], i);
+    } else if (value) {
+      includeMargin = value;
+      if (includeMargin) {
+        return (
+          elems[0].offsetWidth +
+          parseInt(window.getComputedStyle(elems[0], null).marginLeft) +
+          parseInt(window.getComputedStyle(elems[0], null).marginRight)
+        );
+      } else {
+        return elems[0].offsetWidth;
+      }
+    } else {
+      includeMargin = value;
       return elems[0].offsetWidth;
     }
   }

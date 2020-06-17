@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>innerHeight</title>
+    <title>outerWidth</title>
     <style>
-      div {
+      p {
         padding: 10px 20px;
         border: 1px solid #000;
         margin: 10px;
@@ -16,20 +16,13 @@
     <script src="../scripts/manipulation.js"></script>
   </head>
   <body>
-    <div>
-      <p>This is innerHeight function.</p>
-    </div>
-    <div>
-      <p>This is innerHeight function.</p>
-      <p>This is innerHeight function.</p>
-    </div>
+    <p>This is outerWidth function.</p>
+    <p>This is outerWidth function.</p>
     <script>
-      const elems = document.querySelectorAll("div");
-      const result = innerHeight(elems);
+      const elems = document.querySelectorAll("p");
+      const result = outerWidth(elems, true);
       console.log(result);
-      // innerHeight(elems, function (index, height) {
-      //   return index + 80 - height;
-      // });
+      // outerWidth(elems, "200px");
     </script>
   </body>
 </html>

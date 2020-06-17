@@ -7,6 +7,8 @@
     <style>
       div {
         padding: 10px 20px;
+        border: 1px solid #000;
+        margin: 10px;
       }
     </style>
     <script src="../scripts/collectionManipulation.js"></script>
@@ -23,11 +25,11 @@
     </div>
     <script>
       const elems = document.querySelectorAll("div");
-      // const result = innerWidth(elems);
-      // console.log(result);
-      innerWidth(elems, function (index, width) {
-        return index + 100 - width;
-      });
+      const result = innerWidth(elems);
+      console.log(result);
+      // innerWidth(elems, function (index, width) {
+      //   return index + 100 - width;
+      // });
     </script>
   </body>
 </html>
