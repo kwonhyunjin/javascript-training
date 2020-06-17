@@ -187,6 +187,13 @@ function detach(elems) {
   return new Set(newElems);
 }
 
+// 선택한 요소의 내용을 지우는 함수(태그는 그대로남아있다.)
+function empty(elems) {
+  for (let i = 0; i < elems.length; i++) {
+    elems[i].innerHTML = "";
+  }
+}
+
 // 선택한 요소의 첫 번재 요소 높이를 반환하거나, 선택된 요소의 높이를 인수로 전달받은 값으로 설정하는 함수
 function height(elems, value) {
   for (let i = 0; i < elems.length; i++) {
