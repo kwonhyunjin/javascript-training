@@ -24,12 +24,14 @@
       <p>This is innerWidth function.</p>
     </div>
     <script>
-      const elems = document.querySelectorAll("div");
-      const result = innerWidth(elems);
-      console.log(result);
-      // innerWidth(elems, function (index, width) {
-      //   return index + 100 - width;
-      // });
+      (() => {
+        const elems = document.querySelectorAll("div");
+        const result = innerWidth(elems);
+        console.log(result);
+        // innerWidth(elems, function (index, width) {
+        //   return index + 100 - width;
+        // });
+      })();
     </script>
   </body>
 </html>

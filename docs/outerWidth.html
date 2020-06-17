@@ -19,10 +19,12 @@
     <p>This is outerWidth function.</p>
     <p>This is outerWidth function.</p>
     <script>
-      const elems = document.querySelectorAll("p");
-      const result = outerWidth(elems, true);
-      console.log(result);
-      // outerWidth(elems, "200px");
+      (() => {
+        const elems = document.querySelectorAll("p");
+        const result = outerWidth(elems, true);
+        console.log(result);
+        // outerWidth(elems, "200px");
+      })();
     </script>
   </body>
 </html>

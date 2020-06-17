@@ -24,12 +24,14 @@
       <p>This is innerHeight function.</p>
     </div>
     <script>
-      const elems = document.querySelectorAll("div");
-      const result = innerHeight(elems);
-      console.log(result);
-      // innerHeight(elems, function (index, height) {
-      //   return index + 80 - height;
-      // });
+      (() => {
+        const elems = document.querySelectorAll("div");
+        const result = innerHeight(elems);
+        console.log(result);
+        // innerHeight(elems, function (index, height) {
+        //   return index + 80 - height;
+        // });
+      })();
     </script>
   </body>
 </html>

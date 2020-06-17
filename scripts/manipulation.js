@@ -54,7 +54,7 @@ function append(elems, nodes) {
     } else if (nodes instanceof Array) {
       for (let [key, value] of Object.entries(nodes)) {
         if (typeof value == "string") {
-          elems[i].append(value);
+          elems[i].insertAdjacentHTML("beforeend", value);
         } else if (typeof value == "object") {
           const nodeVal = value instanceof Node ? [value] : [...value];
           for (let j = 0; j < nodeVal.length; j++) {
@@ -346,6 +346,44 @@ function outerWidth(elems, value, includeMargin = false) {
     } else {
       includeMargin = value;
       return elems[0].offsetWidth;
+    }
+  }
+}
+
+// 선택한 요소의 첫 번째 자식 요소로 추가하는 함수
+function prepend(elems, nodes) {
+  for (let i = 0; i < elems.length; i++) {
+    if (typeof nodes == "string") {
+      elems[i].insertAdjacentHTML("afterbegin", nodes);
+    } else if (nodes instanceof Array) {
+      for (let [key, value] of Object.entries(nodes)) {
+        if (typeof value == "string") {
+          elems[i].insertAdjacentHTML("afterbegin", value);
+        }
+        if (typeof value == "object") {
+          const nodeVal = value instanceof Node ? [value] : [...value];
+          for (let j = 0; j < nodeVal.length; j++) {
+            nodeVal[j].remove();
+          }
+          elems[i].prepend(
+            ...nodeVal.map((value) => {
+              return value.cloneNode(true);
+            })
+          );
+        }
+      }
+    } else if (typeof nodes == "object") {
+      const nodeArr = nodes instanceof Node ? [nodes] : [...nodes];
+      for (j = 0; j < nodeArr.length; j++) {
+        nodeArr[j].remove();
+      }
+      elems[i].prepend(
+        ...nodeArr.map((value) => {
+          return value.cloneNode(true);
+        })
+      );
+    } else {
+      elems[i].prepend(nodes.call(elems[i], i));
     }
   }
 }

@@ -23,12 +23,14 @@
       <p>This is height function.</p>
     </div>
     <script>
-      const elems = document.querySelectorAll("div");
-      // const result = height(elems);
-      // console.log(result);
-      height(elems, function (index, height) {
-        return index + 300;
-      });
+      (() => {
+        const elems = document.querySelectorAll("div");
+        // const result = height(elems);
+        // console.log(result);
+        height(elems, function (index, height) {
+          return index + 300;
+        });
+      })();
     </script>
   </body>
 </html>

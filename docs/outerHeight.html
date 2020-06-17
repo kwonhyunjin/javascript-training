@@ -19,12 +19,14 @@
     <p>This is outerHeight function.</p>
     <p>This is outerHeight function.</p>
     <script>
-      const elems = document.querySelectorAll("p");
-      const result = outerHeight(elems, true);
-      console.log(result);
-      // outerHeight(elems, function (index, height) {
-      // return index + 300;
-      // });
+      (() => {
+        const elems = document.querySelectorAll("p");
+        const result = outerHeight(elems, true);
+        console.log(result);
+        // outerHeight(elems, function (index, height) {
+        // return index + 300;
+        // });
+      })();
     </script>
   </body>
 </html>

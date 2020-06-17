@@ -22,10 +22,12 @@
       <p>This is width function.</p>
     </div>
     <script>
-      const elems = document.querySelectorAll("div");
-      const result = width(elems);
-      console.log(result);
-      // width(elems, "200px");
+      (() => {
+        const elems = document.querySelectorAll("div");
+        const result = width(elems);
+        console.log(result);
+        // width(elems, "200px");
+      })();
     </script>
   </body>
 </html>
